@@ -1,28 +1,30 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:kototinder/theme/app_gradients.dart';
-import 'screens/home_screen.dart';
-
-import 'config/api_config.dart';
+import 'package:kototinder/core/auth/auth_service.dart';
+import 'package:kototinder/core/errors/error_handler.dart';
+import 'package:kototinder/presentation/screens/auth_screen.dart';
+import 'package:kototinder/presentation/screens/onboarding_screen.dart';
+import 'package:kototinder/presentation/theme/app_gradients.dart';
+import 'presentation/screens/home_screen.dart';
+import 'core/di/injection_container.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  ErrorWidget.builder = (FlutterErrorDetails details) {
-    return Center(
-      child: Text("UI error: ${details.summary}", textAlign: TextAlign.center),
-    );
-  };
-  FlutterError.onError = (details) {
-    if (kDebugMode) {
-      print('Critical error: $details');
-    }
-  };
-  await ApiConfig.init();
-  runApp(MyApp());
+  await init();
+
+  final authService = getIt<AuthService>();
+  final isLoggedIn = await authService.isLoggedIn();
+  final onboardingCompleted = await authService.isOnboardingCompleted();
+
+  registerGlobalErrorHandlers();
+  runApp(MyApp(
+      showOnboarding: !onboardingCompleted && !isLoggedIn,
+      isLoggedIn: isLoggedIn));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool showOnboarding;
+  final bool isLoggedIn;
+  const MyApp({super.key, required this.showOnboarding, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,9 @@ class MyApp extends StatelessWidget {
           child: child,
         );
       },
-      home: HomeScreen(),
+      home: showOnboarding
+          ? OnboardingScreen()
+          : (isLoggedIn ? HomeScreen() : AuthScreen()),
     );
   }
 }

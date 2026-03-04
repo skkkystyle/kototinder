@@ -20,6 +20,10 @@ Kototinder — это мобильное приложение на Flutter, ко
 - Обработка сетевых ошибок с отображением понятных сообщений
 - Современный UI с розово-фиолетовым градиентом и скруглёнными элементами
 - Готово к сборке под Android (APK)
+- Система авторизации (Sign in & Sign up)
+- Онбординг с анимациями и перелистываниями
+- Переход к Clean Arch
+- Unit/Widget тесты
 
 ---
 
@@ -36,6 +40,12 @@ Kototinder — это мобильное приложение на Flutter, ко
 ---
 
 ## Интерфейс и экраны
+
+### Экран онбординга
+- Основные советы по пользованию приложением
+
+### Экраны авторизации
+- Дефолтно
 
 ### Главный экран (`MainCatScreen`)
 - Карточка кота с названием породы
@@ -64,7 +74,7 @@ Kototinder — это мобильное приложение на Flutter, ко
 - **Анимированные свайпы**: при свайпе карточка плавно улетает влево или вправо с анимацией `SlideTransition`.
 - **Прогрузка нескольких котиков**: в фоне всегда загружены 2–3 следующих кота, чтобы создать эффект бесконечного стека.
 - **Анимация кнопок**: при нажатии кнопки "Like" и "Skip" плавно уменьшаются благодаря `AnimatedScale`.
-
+- **Анимации кота на онбординге**
 ---
 
 ## Скриншоты интерфейса
@@ -73,6 +83,19 @@ Kototinder — это мобильное приложение на Flutter, ко
 [Детали породы](https://drive.google.com/file/d/1rvP_qvYHqvxxyd0qY0jUDz29Z21_d2Bz/view?usp=sharing)  
 
 [Список пород](https://drive.google.com/file/d/1tA5bHWcNQnhcdYfuPvrwDqMAZyjhTSTb/view?usp=sharing)  
+
+[Онбординг 1](https://drive.google.com/file/d/1IkX8ZiSsAbT1lcc0VsptQVJNnesnA5RZ/view)
+
+[Онбординг 2](https://drive.google.com/file/d/1m6yxGn-o3ekLJxEI_dpeZLdV5NK-7s9Y/view)
+
+[Welcome](https://drive.google.com/file/d/1aS-YGh5JHtB9QyekIxzX7J0DLrDwF6Lc/view?usp=sharing)
+
+[Sign in](https://drive.google.com/file/d/1UpxNlw6GCqrBIoZ13DhH3XshbTNcnGFL/view?usp=sharing)
+
+[Sign up](https://drive.google.com/file/d/1A0jZVxsvHAA2nUy57L4LfXm-lnMOpf81/view?usp=sharing)
+
+## Скринкаст анимации
+[Видео](https://drive.google.com/file/d/1EE-7ZAd37ikPtnnLaCnxMbrkxryHajB6/view?usp=sharing)
 
 ---
 
